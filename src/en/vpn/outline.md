@@ -51,6 +51,33 @@ In the dialog, select the "Outline" option and enable "Send email associated wit
 
 After installation is complete, you will receive an email with your Outline Manager URL and access credentials. You can then use these to connect to your server through the Outline client, or manage your VPN server through the Outline Manager app.
 
+#### What Gets Installed
+
+The script deploys an Outline VPN server (Shadowsocks-based) inside Docker, managed via the Outline Manager desktop app.
+
+After installation you receive:
+
+- **connection-info.txt** — contains the Management API URL and certificate fingerprint needed for Outline Manager
+
+#### How to Connect
+
+1. Install [Outline Manager](https://getoutline.org/) on your PC/Mac
+2. Choose "Set up Outline anywhere" and paste the management URL from `connection-info.txt`
+3. Create access keys in Outline Manager and share them with users
+4. Users install the [Outline Client](https://getoutline.org/) and paste their access key
+
+#### Firewall
+
+The script configures an **open** firewall — no inbound restrictions are applied (Outline requires dynamic ports for client connections).
+
+#### Server Management
+
+```bash
+cd /opt/outline-docker && docker compose up -d    # start
+cd /opt/outline-docker && docker compose down      # stop
+cd /opt/outline-docker && docker compose logs -f   # logs
+```
+
 ### Manual Installation
 
 The installation process varies depending on your Linux distribution. Make sure to use the correct commands for the installation process.

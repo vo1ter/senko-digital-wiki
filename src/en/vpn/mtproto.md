@@ -27,6 +27,10 @@ MTProto Proxy is Telegram's own proxy protocol, purpose-built for the Telegram m
 - **Multi-user** - a single proxy server can handle tens of thousands of simultaneous connections
 - **Sponsor channels** - you can optionally promote a channel to all proxy users
 
+::: tip
+Senko Digital hosting clients have access to a fully automated MTProto proxy installation script during initial service ordering, or through the "Run Script" option in the VM control panel.
+:::
+
 ## Prerequisites
 
 - VPS server with Linux (Ubuntu 24 is used as an example)
@@ -37,6 +41,54 @@ MTProto Proxy is Telegram's own proxy protocol, purpose-built for the Telegram m
 ::: tip
 If you haven't installed Docker yet, follow the Docker installation steps from our [WireGuard Easy guide](/vpn/wireguard-easy#_2-install-docker-and-docker-compose) - the process is the same.
 :::
+
+## Installation
+
+### Automatic Installation for Hosting Clients
+
+#### During Service Order
+
+In the order menu, select "MTProto" from the dropdown menu, complete the order and wait for service processing to finish.
+
+Immediately after server activation, you will receive an email containing your MTProto proxy connection links and instructions.
+
+#### Through the VM Panel
+
+Go to the [VM control panel](https://vm.senko.digital), navigate to the management of the desired server, expand the "Menu" in the top right corner and select "Run script".
+
+In the dialog, select the "MTProto" option and enable "Send email associated with script".
+
+After installation is complete, you will receive an email with your MTProto proxy connection links.
+
+#### What Gets Installed
+
+The script deploys the official Telegram MTProto proxy inside Docker. The container auto-generates a secret and connection links with zero configuration required.
+
+After installation you receive:
+
+- **connection-info.txt** — contains the `tg://` link, `t.me` web link, secret, server IP, and port
+
+#### How to Connect
+
+1. Open the `t.me` link from `connection-info.txt` in any browser — Telegram will offer to enable the proxy automatically
+2. Or: in Telegram, go to **Settings → Advanced → Connection Type → Use Custom Proxy → MTProto**, and enter the server IP, port, and secret manually
+
+#### Firewall
+
+The script configures a **restrictive** firewall — only SSH and MTProto (`443/tcp`) are open. All other inbound traffic is dropped.
+
+A daily restart at 04:00 UTC automatically refreshes Telegram core IP addresses.
+
+#### Server Management
+
+```bash
+cd /opt/mtproto-docker && docker compose up -d    # start
+cd /opt/mtproto-docker && docker compose down      # stop
+cd /opt/mtproto-docker && docker compose logs -f   # logs
+docker logs mtproto_proxy                          # view connection links
+```
+
+### Manual Installation
 
 ## Installing Docker (Quick Reference)
 

@@ -50,6 +50,32 @@ In the dialog, select the "WireGuard" option and enable "Send email associated w
 
 After installation is complete, you will receive an email with your WireGuard configuration file and connection instructions. Simply import the configuration file into your WireGuard client to start using the VPN.
 
+#### What Gets Installed
+
+The script deploys a WireGuard VPN server inside Docker with automatic client configuration generation.
+
+After installation you receive:
+
+- **peer1.conf** — a ready-to-use WireGuard client configuration file (also displayed as a QR code in the script log)
+
+#### How to Connect
+
+1. Install the [WireGuard client](https://www.wireguard.com/install/) on your device
+2. Import the `peer1.conf` file (or scan the QR code on mobile)
+3. Activate the tunnel
+
+#### Firewall
+
+The script configures a **restrictive** firewall — only SSH and WireGuard (`51820/udp`) are open. All other inbound traffic is dropped.
+
+#### Server Management
+
+```bash
+cd /opt/wireguard-docker && docker compose up -d    # start
+cd /opt/wireguard-docker && docker compose down      # stop
+cd /opt/wireguard-docker && docker compose logs -f   # logs
+```
+
 ### Manual Installation
 
 The installation process varies depending on your Linux distribution. Make sure to use the correct commands for the installation process.
