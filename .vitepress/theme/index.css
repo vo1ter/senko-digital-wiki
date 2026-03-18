@@ -38,6 +38,7 @@ Fixes for default VitePress styles
   }
 
   .VPNavBar:not(.home.top) .content-body {
+    margin-right: 0;
     padding-right: 32px;
   }
 }
