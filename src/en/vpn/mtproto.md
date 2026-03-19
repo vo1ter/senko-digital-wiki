@@ -46,9 +46,13 @@ If you haven't installed Docker yet, follow the Docker installation steps from o
 
 ### Automatic Installation for Hosting Clients
 
+Supported operating systems: Debian 11, Debian 12, Debian 13, Ubuntu 20.04, Ubuntu 22.04, Ubuntu 24.04.
+
 #### During Service Order
 
 In the order menu, select "MTProto" from the dropdown menu, complete the order and wait for service processing to finish.
+
+![Selecting MTProto script during server ordering in the client area](/images/vpn/mtproto/client-area.png){data-zoomable}
 
 Immediately after server activation, you will receive an email containing your MTProto proxy connection links and instructions.
 
@@ -56,7 +60,11 @@ Immediately after server activation, you will receive an email containing your M
 
 Go to the [VM control panel](https://vm.senko.digital), navigate to the management of the desired server, expand the "Menu" in the top right corner and select "Run script".
 
+![Opening the Run script option from the VM panel menu](/images/vpn/mtproto/vm-run-script.png){data-zoomable}
+
 In the dialog, select the "MTProto" option and enable "Send email associated with script".
+
+![Run script wizard with MTProto selected and email notification enabled](/images/vpn/mtproto/script-wizard.png){data-zoomable}
 
 After installation is complete, you will receive an email with your MTProto proxy connection links.
 
