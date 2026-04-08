@@ -50,6 +50,36 @@
       "source": "/ru/games/minecraft/core",
       "destination": "/ru/games/minecraft/software",
       "permanent": true
+    },
+    {
+      "source": "/vps/letsencrypt-ssl",
+      "destination": "/software/letsencrypt-ssl",
+      "permanent": true
+    },
+    {
+      "source": "/ru/vps/letsencrypt-ssl",
+      "destination": "/ru/software/letsencrypt-ssl",
+      "permanent": true
+    },
+    {
+      "source": "/vps/nodejs-pm2-deploy",
+      "destination": "/software/nodejs-pm2-deploy",
+      "permanent": true
+    },
+    {
+      "source": "/ru/vps/nodejs-pm2-deploy",
+      "destination": "/ru/software/nodejs-pm2-deploy",
+      "permanent": true
+    },
+    {
+      "source": "/vps/how-to-install-mikrotik-chr-on-a-virtual-server",
+      "destination": "/software/how-to-install-mikrotik-chr-on-a-virtual-server",
+      "permanent": true
+    },
+    {
+      "source": "/ru/vps/how-to-install-mikrotik-chr-on-a-virtual-server",
+      "destination": "/ru/software/how-to-install-mikrotik-chr-on-a-virtual-server",
+      "permanent": true
     }
   ],
   "cleanUrls": true

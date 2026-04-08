@@ -23,8 +23,8 @@ head:
 
 #### [Создание резервной копии](/ru/vps/how-to-create-a-backup)
 
-#### [Настройка Let's Encrypt SSL](/ru/vps/letsencrypt-ssl)
+#### [Настройка Let's Encrypt SSL](/ru/software/letsencrypt-ssl)
 
-#### [Деплой Node.js с PM2](/ru/vps/nodejs-pm2-deploy)
+#### [Деплой Node.js с PM2](/ru/software/nodejs-pm2-deploy)
 
-#### [Установка MikroTik CHR](/ru/vps/how-to-install-mikrotik-chr-on-a-virtual-server)
+#### [Установка MikroTik CHR](/ru/software/how-to-install-mikrotik-chr-on-a-virtual-server)

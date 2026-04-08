@@ -200,7 +200,7 @@ sudo systemctl restart nginx
 ```
 
 ::: tip
-After configuring Nginx, it's recommended to set up an SSL certificate using Let's Encrypt for secure connections. Instructions can be found in our [Let's Encrypt setup article](/vps/letsencrypt-ssl).
+After configuring Nginx, it's recommended to set up an SSL certificate using Let's Encrypt for secure connections. Instructions can be found in our [Let's Encrypt setup article](/software/letsencrypt-ssl).
 :::
 
 ## Basic PM2 commands

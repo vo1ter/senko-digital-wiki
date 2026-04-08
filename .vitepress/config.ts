@@ -193,11 +193,17 @@ export default defineConfig({
                 },
                 { text: '💻 How to reinstall the OS', link: '/vps/os-reinstallation' },
                 { text: '💾 How to create a backup', link: '/vps/how-to-create-a-backup' },
-                { text: "🔒 Let's Encrypt Configuration", link: '/vps/letsencrypt-ssl' },
-                { text: '🚀 Node.js Deployment with PM2', link: '/vps/nodejs-pm2-deploy' },
+              ],
+              collapsed: false,
+            },
+            {
+              text: '🖥️ Software',
+              items: [
+                { text: "🔒 Let's Encrypt Configuration", link: '/software/letsencrypt-ssl' },
+                { text: '🚀 Node.js Deployment with PM2', link: '/software/nodejs-pm2-deploy' },
                 {
                   text: '🌐 How to install MikroTik CHR',
-                  link: '/vps/how-to-install-mikrotik-chr-on-a-virtual-server',
+                  link: '/software/how-to-install-mikrotik-chr-on-a-virtual-server',
                 },
               ],
               collapsed: false,
@@ -381,11 +387,17 @@ export default defineConfig({
                   text: '💾 Как создать резервную копию ВМ',
                   link: '/ru/vps/how-to-create-a-backup',
                 },
-                { text: "🔒 Настройка Let's Encrypt", link: '/ru/vps/letsencrypt-ssl' },
-                { text: '🚀 Деплой Node.js с PM2', link: '/ru/vps/nodejs-pm2-deploy' },
+              ],
+              collapsed: false,
+            },
+            {
+              text: '🖥️ Программное обеспечение',
+              items: [
+                { text: "🔒 Настройка Let's Encrypt", link: '/ru/software/letsencrypt-ssl' },
+                { text: '🚀 Деплой Node.js с PM2', link: '/ru/software/nodejs-pm2-deploy' },
                 {
                   text: '🌐 Установка MikroTik CHR',
-                  link: '/ru/vps/how-to-install-mikrotik-chr-on-a-virtual-server',
+                  link: '/ru/software/how-to-install-mikrotik-chr-on-a-virtual-server',
                 },
               ],
               collapsed: false,

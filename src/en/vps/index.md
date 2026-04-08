@@ -23,8 +23,8 @@ head:
 
 #### [How to Create a Backup](/vps/how-to-create-a-backup)
 
-#### [Let's Encrypt SSL](/vps/letsencrypt-ssl)
+#### [Let's Encrypt SSL](/software/letsencrypt-ssl)
 
-#### [Node.js Deployment with PM2](/vps/nodejs-pm2-deploy)
+#### [Node.js Deployment with PM2](/software/nodejs-pm2-deploy)
 
-#### [Installing MikroTik CHR](/vps/how-to-install-mikrotik-chr-on-a-virtual-server)
+#### [Installing MikroTik CHR](/software/how-to-install-mikrotik-chr-on-a-virtual-server)
