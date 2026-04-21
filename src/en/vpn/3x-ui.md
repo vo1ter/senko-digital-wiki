@@ -44,7 +44,7 @@ Our hosting clients have access to fully automated 3X-UI panel installation scri
 
 ## Installation
 
-### Automatic Installation for Hosting Clients
+<!-- ### Automatic Installation for Hosting Clients
 
 #### During Service Order
 
@@ -58,7 +58,7 @@ Go to the [VM control panel](https://vm.senko.digital), navigate to the manageme
 
 In the dialog, select the "3X-UI" option and enable "Send email associated with script".
 
-After installation is complete, you will receive an email with login credentials for the control panel. Then you can [log in](/vpn/3x-ui#logging-into-the-web-panel) and start [configuring connections](/vpn/3x-ui#setting-up-connections-inbounds).
+After installation is complete, you will receive an email with login credentials for the control panel. Then you can [log in](/vpn/3x-ui#logging-into-the-web-panel) and start [configuring connections](/vpn/3x-ui#setting-up-connections-inbounds). -->
 
 ### Standard Installation
 
@@ -68,10 +68,15 @@ To install 3X-UI, run the following command:
 bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
 ```
 
+::: warning
+Please note that you need to install `curl` before executing the command. You can do this by executing the command `apt install curl`
+:::
+
 During installation, you will be prompted to:
 
 1. Change panel settings (recommended to answer `y` for increased security)
 2. Specify the panel port (recommended to use a non-standard one)
+3. Create an SSL certificate for either a domain or an IP address (strongly recommended to create a certificate at least for the IP address for increased security)
 
 ### Installing a Specific Version
 
@@ -126,11 +131,12 @@ There are several ways to configure an SSL certificate in 3x-ui
 1. Make sure your domain correctly points to this server (i.e., the A record in DNS is configured correctly).
 2. Run the `x-ui` command in the terminal, then select `SSL Certificate Management`.
 3. You will be presented with the following options:
-    - **Get SSL:** Obtain SSL certificates.
+    - **Get SSL (Domain):** Obtain an SSL certificate for a domain.
     - **Revoke:** Revoke existing SSL certificates.
     - **Force Renewal:** Force renewal of SSL certificates.
     - **Show Existing Domains:** Display all domain certificates available on the server.
     - **Specify Certificate Paths for the Panel:** Specify a certificate for your domain to be used by the control panel.
+    - **Get SSL Certificate for IP Address:** Obtain an SSL certificate for the IP address.
 
 ### Certbot
 
@@ -144,17 +150,26 @@ certbot renew --dry-run
 
 - where `yourdomain.com` is your domain
 
+::: warning
+Please note that Certbot supports the creation of SSL certificates only for domains.
+:::
+
 ## Logging into the Web Panel
 
-After installing the control panel, follow the instructions below:
+After installing the control panel, copy the credentials in a safe space or memorize them.
+If the installation was successful, you will be provided with login data in this format:
 
-1. Enter the command `x-ui`
+![successful 3x-ui installation credentials output](/images/vpn/3x-ui/panel_installation_complete.png)
+
+<!-- follow the instructions below: -->
+
+<!-- 1. Enter the command `x-ui`
 2. Select option `10` by entering the corresponding number in the terminal.
 
 You will be provided with login data in this format:
 ![console](/images/vpn/3x-ui/view-current-settings.png){data-zoomable}
 
-You will need to go to the link specified in `Access URL` and log in with your `username` and `password`
+<!-- You will need to go to the link specified in `Access URL` and log in with your `username` and `password` -->
 
 ## Setting Up Connections (Inbounds)
 
