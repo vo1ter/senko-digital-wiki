@@ -172,6 +172,10 @@ export default defineConfig({
                   text: '🔒 Two-Factor Authentication',
                   link: '/client-area/two-factor-authentication',
                 },
+                {
+                  text: '📲 Telegram Notifications',
+                  link: '/client-area/telegram-notifications',
+                },
               ],
               collapsed: false,
             },
@@ -362,6 +366,10 @@ export default defineConfig({
                 {
                   text: '🔒 Двухфакторная аутентификация',
                   link: '/ru/client-area/two-factor-authentication',
+                },
+                {
+                  text: '📲 Уведомления в Telegram',
+                  link: '/ru/client-area/telegram-notifications',
                 },
               ],
               collapsed: false,
