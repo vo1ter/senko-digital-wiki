@@ -201,6 +201,11 @@ export default defineConfig({
               collapsed: false,
             },
             {
+              text: '🌐 DNS Hosting',
+              items: [{ text: '❓ Getting Started', link: '/dns-hosting/getting-started' }],
+              collapsed: false,
+            },
+            {
               text: '🖥️ Software',
               items: [
                 { text: "🔒 Let's Encrypt Configuration", link: '/software/letsencrypt-ssl' },
@@ -399,6 +404,11 @@ export default defineConfig({
               collapsed: false,
             },
             {
+              text: '🌐 DNS-хостинг',
+              items: [{ text: '❓ Начало работы', link: '/ru/dns-hosting/getting-started' }],
+              collapsed: false,
+            },
+            {
               text: '🖥️ Программное обеспечение',
               items: [
                 { text: "🔒 Настройка Let's Encrypt", link: '/ru/software/letsencrypt-ssl' },
@@ -507,7 +517,7 @@ export default defineConfig({
       '/ru/vps/promo-limitations',
       '/vps/',
       '/vpn/',
-      '/games/'
+      '/games/',
     ],
   },
   lastUpdated: true,
