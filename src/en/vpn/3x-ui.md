@@ -69,14 +69,19 @@ bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.
 ```
 
 ::: warning
-Please note that you need to install `curl` before executing the command. You can do this by executing the command `apt install curl`
+Please note that you need to install `curl` before executing the command. You can do this by executing the command `apt install curl`.
 :::
 
 During installation, you will be prompted to:
 
-1. Change panel settings (recommended to answer `y` for increased security)
-2. Specify the panel port (recommended to use a non-standard one)
-3. Create an SSL certificate for either a domain or an IP address (strongly recommended to create a certificate at least for the IP address for increased security)
+1. Choose the database type (for personal use, SQLite is recommended).
+![database selection](/images/vpn/3x-ui/installation_db.png)
+2. Change panel settings (recommended to answer `y` for increased security).
+![custom settings selection](/images/vpn/3x-ui/installation_custom_settings.png)
+3. Specify the panel port (recommended to use a non‑standard port).
+![port selection](/images/vpn/3x-ui/installation_port.png)
+4. Create an SSL certificate for a domain or IP address (recommended to create at least for the IP address, option 2).
+![ssl certificate creation](/images/vpn/3x-ui/installation_ssl.png)
 
 ### Installing a Specific Version
 
@@ -129,7 +134,7 @@ There are several ways to configure an SSL certificate in 3x-ui
 **To manage SSL certificates using ACME:**
 
 1. Make sure your domain correctly points to this server (i.e., the A record in DNS is configured correctly).
-2. Run the `x-ui` command in the terminal, then select `SSL Certificate Management`.
+2. Run the `x-ui` command in the terminal, then select `SSL Certificate Management` (option 19).
 3. You will be presented with the following options:
     - **Get SSL (Domain):** Obtain an SSL certificate for a domain.
     - **Revoke:** Revoke existing SSL certificates.
@@ -177,41 +182,71 @@ You will be provided with login data in this format:
 
 1. Go to the "Inbounds" page
 2. Click the "Add inbound" button to create a new connection
+![add inbound](/images/vpn/3x-ui/add_inbound.png)
 3. In the opened window, enter any convenient name in the "Remark" field
 4. Select the protocol type (VMess, VLESS, Trojan, ShadowSocks, or WireGuard)
 
 ### Protocol Configuration
 
-#### For VLESS + Reality (recommended for bypassing restrictions):
+#### For VLESS + Reality (recommended for bypassing restrictions)
 
-1. Select security type - `Reality`
-2. Set uTLS - `chrome`
-3. In the "Dest" field, enter a value, for example `dl.google.com:443`
-4. In the "SNI" field, enter a value, for example `dl.google.com`
-5. Click `Get New Cert` to automatically generate random keys
-6. Click the Create button to save and create the connection
-
-### Setting Limits
-
-For each connection, you can configure:
-
-- Traffic limit (in gigabytes)
-- Expiration date (in days)
-- IP address limit (number of simultaneous connections)
-- Enable or disable restrictions
+1. Select security type — `Reality`.
+2. Set uTLS — `firefox` (some setups may require a different uTLS).
+3. In the "Dest" field enter, for example: `dl.google.com:443`.
+4. In the "SNI" field enter, for example: `dl.google.com`.
+5. Click `Get New Cert` and `Get New Seed` to automatically generate keys.
+6. Click Create to save and add the inbound.
 
 ## User Management
 
-In the `Inbounds` section:
+### Creating and setting up a client
 
-1. To view additional settings, click the `+` icon next to the created connection
-2. To create a new user, select the "Add Client" option
-![add client](/images/vpn/3x-ui/add_client.png){data-zoomable}
-3. For each user, you can configure:
-   - Name (a name convenient for you)
-   - Traffic limit
-   - Expiration date
-   - Unique ID
+1. Go to the "Clients" page
+2. Click the "Add Clients" button to create a new client
+![add client](/images/vpn/3x-ui/add_client.png)
+3. In the opened window, the panel will offer all necessary data for the client to work correctly, but you can modify it.
+4. Select which inbounds to attach to the client in the "Attached inbounds" field. You can select the previously created inbound.
+
+### Setting limits
+
+For each client you can configure:
+
+- Traffic limit (in gigabytes)
+- Expiration date (in days)
+- Enable or disable the client
+- IP address limit (number of simultaneous connections)
+
+::: warning
+At the time of writing, panel version v3.2.8 **does not support** IP address limit configuration for clients directly through the panel. The section [IP limit configuration](#ip-limit-configuration) describes the setup process, but it is recommended only for advanced users.
+:::
+
+#### IP limit configuration
+
+::: warning
+Create a backup of the panel database before editing network requests from the browser. Incorrect changes can break client records. Example:
+
+```bash
+sudo cp /etc/x-ui/x-ui.db /etc/x-ui/x-ui.db.bak
+```
+:::
+
+1. Connect to your server via SSH or VNC.
+2. Enter the `x-ui` menu.
+3. Choose "IP Limit Management" (option 21).
+4. Select "Install Fail2ban and configure IP Limit" (option 1) and confirm the installation by pressing Enter.
+
+If installation succeeds you will see a success message:
+![successfull fail2ban installation](/images/vpn/3x-ui/ip_limit_install_success.png)
+
+5. Restart the panel (option 13).
+6. Open 3X-UI in your browser and go to the Clients list.
+7. Click "Edit" on the target client, open Developer Tools (right-click → Inspect) and switch to the Network tab.
+8. Click "Save" — a POST request to `<panel url>/panel/api/clients/update/<email>` will appear in the request list.
+9. Right-click that request and choose "Edit and Resend".
+10. In the request body find the `limitIp` field, change it to the desired value and send the modified request (Send).
+![ip limit body](/images/vpn/3x-ui/ip_limit_body.png)
+11. Verify the "IP Limit" value in the client's info.
+![ip limit client info](/images/vpn/3x-ui/ip_limit_client_info.png)
 
 ## Client Connection
 
@@ -224,9 +259,12 @@ Recommended clients:
 
 To connect:
 
-1. In the 3X-UI web panel, click on the QR code of the desired user
-2. Copy the configuration or scan the QR code using a VPN client
-3. Import the configuration into the client and make the connection
+1. In the 3X-UI web panel click the QR code for the desired user.
+![connection QR](/images/vpn/3x-ui/connect_qr.png)
+Or copy the subscription/connection link
+![connection info](/images/vpn/3x-ui/connect_info.png)
+2. Copy the configuration or scan the QR code with your VPN client.
+3. Import the configuration into the client and connect.
 
 ### Android
 
@@ -239,8 +277,11 @@ To connect:
 
 1. Install the client from Google Play
 2. In the 3X-UI web panel, click on the QR code of the desired user
-3. Scan the QR code using the VPN client or copy and import the configuration
-4. Connect using the imported configuration
+![connection QR](/images/vpn/3x-ui/connect_qr.png)
+Or copy the subscription/connection link
+![connection info](/images/vpn/3x-ui/connect_info.png)
+3. Scan the QR code using the VPN client or copy and import the configuration.
+4. Connect using the imported configuration.
 
 ### iOS
 
@@ -254,6 +295,9 @@ To connect:
 
 1. Install the client from the App Store
 2. In the 3X-UI web panel, click on the QR code of the desired user
+![connection QR](/images/vpn/3x-ui/connect_qr.png)
+Or copy the subscription/connection link
+![connection info](/images/vpn/3x-ui/connect_info.png)
 3. Scan the QR code using the client or copy and import the configuration
 4. Connect using the imported configuration
 
@@ -266,6 +310,50 @@ In the 3X-UI web panel, you can monitor user activity:
 - Connection status
 - User subscription expiration dates
 - IP address usage
+
+## IPv6 Traffic Routing
+
+Our hosting clients have access to a special IPv6 subnet without ads from popular services (e.g., YouTube). To use it correctly, additional configuration is required. This guide uses YouTube as an example to set up IPv6 routing only for that service.
+
+### Creating an Outbound
+
+In the left sidebar of the panel, open the Xray Configs tab, go to Outbounds, then click "+ Outbounds":
+![ipv6 create outbound](/images/vpn/3x-ui/ipv6_create_outbound.png)
+
+Fill in the fields as follows:
+- Protocol — `freedom`
+- Tag — `ipv6-freedom`
+- Strategy — `ForceIPv6`
+
+Your Outbound should look like this:
+![outbound info](/images/vpn/3x-ui/ipv6_outbound_info.png)
+
+Click "Create", then save the changes in the top left and restart Xray:
+![restart xray](/images/vpn/3x-ui/ipv6_restart_xray.png)
+
+### Creating a Routing Rule
+
+In the same tab, go to Routing Rules and click "+ Routing Rules":
+![ipv6 routing rule creation button](/images/vpn/3x-ui/ipv6_routing_rule.png)
+
+Fill in the fields as follows:
+- Domain name — enter: `geosite:youtube,domain:googlevideo.com`
+- Inbound tags — select the inbound for which this rule will be active
+- Outbound tag — select the previously created outbound `ipv6-freedom`
+
+Your rule should look like this:
+![routing rule info](/images/vpn/3x-ui/ipv6_routing_rule_info.png)
+
+Click "Create", then move your rule to position 2:
+![routing rule position](/images/vpn/3x-ui/ipv6_routing_rule_position.png)
+
+::: tip
+You can change the position using these buttons:
+![routing rule how to change position](/images/vpn/3x-ui/ipv6_routing_rule_change_position.png)
+:::
+
+Save the changes in the top left and restart Xray:
+![restart xray](/images/vpn/3x-ui/ipv6_restart_xray.png)
 
 ## Updating 3x-ui
 
@@ -303,7 +391,9 @@ In the web panel, you can configure additional Xray options:
 
 ### WARP Configuration
 
-For versions `v2.1.0` and later - WARP is built-in and does not require additional installation.
+For versions `v2.1.0` and later — WARP is built-in and does not require additional installation.
 
-Simply enable the desired configuration in the panel.
+Simply enable the desired configuration in the panel, create an account, and add an Outbound.
 ![warp](/images/vpn/3x-ui/warp.png){data-zoomable}
+![create warp account](/images/vpn/3x-ui/warp_create_account.png){data-zoomable}
+![create warp outbound](/images/vpn/3x-ui/warp_outbound.png){data-zoomable}
