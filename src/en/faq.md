@@ -23,9 +23,9 @@ Detailed instructions for ordering a VPS server are [available in this article](
 ### 🕒 How long does server setup take?
 Virtual servers are set up automatically within 120 seconds after payment. In rare cases, e.g. if you have selected Windows as your OS, server installation may take up to 10 minutes, or when a plan is in very high demand, the setup process may take up to 24 hours.
 
-Dedicated servers require manual configuration and may take up to five business days to be activated. We always do our best to activate these as quickly as possible; however, hardware shortages or supplier delays may occasionally delay the process.
+Instantly available dedicated servers are automatically activated within an hour, subject to availability and the OS chosen. We always do our best to activate these as quickly as possible; however, hardware shortages or supplier delays may occasionally delay the process.
 
-Game hosting servers typically take approximately 24 hours to process after payment.
+Game hosting servers typically take approximately 15 minutes to process after payment.
 
 ### 🔎 Can I test latency or check network performance before ordering?
 Yes! You can use our Looking Glass at [https://lg.senko.digital](https://lg.senko.digital) to test latency, run network diagnostics, and download speed test files for each of our locations before making a purchase.
@@ -36,14 +36,14 @@ No, all of our services are billed on a monthly basis by default, and there is n
 ## 🌍 Server Locations & Infrastructure
 
 ### 🌐 Where are your servers located?
-Our servers are provided in three main locations: **Germany**, **Frankfurt-am-Main**, **Finland**, **Helsinki** and **the Netherlands**, **Amsterdam**.
+Our servers are provided in three main locations: **Germany**, **Frankfurt am Main**, **Finland**, **Helsinki** and **the Netherlands**, **Amsterdam**.
 
 ### 🏢 Which data centers do you use for your servers? Are they reliable?
-For our German location, we utilize Firstcolo's data center facilities in Frankfurt-am-Main. Firstcolo is known for their powerful infrastructure and excellent connectivity within Central and Western Europe.
+For our location in Germany, we utilize Firstcolo's data center facilities in Frankfurt am Main. Firstcolo is known for their powerful infrastructure and excellent connectivity within Central and Western Europe.
 
-For our Finnish location, while the servers are physically hosted in Hetzner's Helsinki facility, virtual servers are not directly exposed through Hetzner's network. Instead, we use a different upstream provider to ensure optimal performance and reliability for our customers.
+In Finland, while the servers are colocated in Hetzner's Helsinki facility, virtual servers are not directly exposed through Hetzner's network. Instead, we use a different upstream provider to be able to provide DDoS protection, as well as ensure optimal performance and reliability for our customers.
 
-For our Dutch location, we utilize Equinix's data center facilities in Amsterdam and Zwolle.
+In the Netherlands, we utilize Skylink and Nikhef facilities.
 
 ### 📍 Can I choose the exact data center or facility?
 Great question! At this time, we don't offer a granular choice of individual data centers or facilities. While our current range of locations is limited, we're steadily expanding and regularly adding more locations, while also prefering quality over quantity *wink-wink*
@@ -81,10 +81,10 @@ Yes, you can transfer your virtual server between locations on any of our VPS pl
 
 ### ℹ️ Do you have your own ASN?
 
-Yes, we use our own autonomous system, [AS213520](https://as213520.net), registered with RIPE, for all VPS and game hosting services. This gives us full control to manage and optimize our network independently.
+Yes, we use our own autonomous system, [AS213520](https://as213520.net), registered with RIPE, for all VPS, dedicated server and game hosting services. This gives us full control to manage and optimize our network independently.
 
 ### ⚡ Is IPv6 supported?
-Yes, all our VPS plans come with both IPv4 and IPv6 addresses by default. Additional IPv4 addresses can be purchased if needed.
+Yes, all our VPS plans come with a on-link /64 IPv6 subnet by default.
 
 ### 📡 Can I buy additional IP addresses?
 Yes, you can purchase up to 16 additional IPv4 addresses per VPS server. The cost is €1.5 per month for each IPv4 address. Please note that additional IPs are not available for BUDGET lineup plans due to plan limitations.
@@ -104,9 +104,9 @@ If this is a feature you are interested in, please let us know - customer demand
 No, all VPS come with dedicated IPv4 and IPv6 addresses. We currently do not offer NAT or shared IP plans.
 
 ### 🌐 Are any ports initially restricted on VPS servers?
-To help protect our IP addresses and maintain network integrity, outbound ports 25 (SMTP) and 465 (SMTPS) are initially blocked on all VPS plans.
+To help protect our IP addresses and maintain network integrity, outbound port 25 (SMTP) is initially blocked on all VPS plans.
 
-For the `EP-0`, `BUDGET-1`, `BUDGET-2`, `BUDGET-3`, and `BUDGET-4` plans, these ports cannot be opened under any circumstances in any of the locations.
+For the `BUDGET-1`, `BUDGET-2`, `BUDGET-3`, and `BUDGET-4` plans, these ports cannot be opened under any circumstances in any of the locations.
 
 For all other plans, you may request the opening of ports 25 and/or 465 by submitting a support request via your client area. Please note that we will review the intended use as part of our verification process prior to approving such requests.
 
@@ -120,7 +120,7 @@ Yes! You can point any domain you own to our VPS and manage DNS settings via our
 At this time, we are unable to offer BGP sessions from our AS due to current network topology constraints. However, we are actively working on adding this capability and expect to make BGP sessions available for everyone in the near future.
 
 ### 🚦 Do you throttle or limit bandwidth during peak hours?
-There is no artificial throttling of bandwidth during peak hours. Your bandwidth and network performance are determined by your plan's parameters and current network conditions.
+There is no artificial throttling of bandwidth during peak hours. Your bandwidth and network performance are determined by your plan's parameters and current network conditions, as well as whether your service has went over the traffic allocation.
 
 ## 🖥️ Operating Systems & Software
 
@@ -129,16 +129,16 @@ We support a wide range of operating systems including:
 
 Linux distributions:
 - Debian (11 Bullseye, 12 Bookworm, 13 Trixie)
-- Ubuntu (22.04 Jammy, 24.04 Noble)
+- Ubuntu (22.04 Jammy, 24.04 Noble, 26.04 Resolute)
 - AlmaLinux (8, 9, 10)
 - CentOS (8 Stream, 9 Stream)
 - Oracle Linux (8, 9)
 
 Other operating systems:
-- Windows (10, 11, Server 2016/2019/2019 Datacenter/2022/2025)
+- Windows (10, 11, Server 2016/2022/2025)
 - FreeBSD (13, 14)
 
-We also support custom ISO uploads with up to 10 GB in size.
+We also support custom ISO uploads with up to 10 GB in size (except for BUDGET plans).
 
 ### 🖥️ Do you support Windows licensing?
 We do not provide operating system licenses and are not a Microsoft partner (yet). If you wish to use Windows on your server, you must supply your own valid license (BYOL - Bring Your Own License). Our virtual and dedicated servers fully support customer-supplied Windows licenses.
@@ -153,7 +153,7 @@ We do not directly sell software licenses at this time. However, if you wish to 
 All of our virtual servers use KVM (Kernel-based Virtual Machine) virtualization technology. KVM enables robust isolation between customers, ensuring strong security, reliable performance, and hardware-level virtualization features. This approach allows each VPS to function like a separate, fully independent server with its own resources.
 
 ### 🧑‍💻 Do you allow virtualization inside VPS (nested virtualization)?
-Nested virtualization is allowed only on our DE-RZ9 and DE-STORAGE plan lineups. This restriction exists because nested virtualization significantly increases CPU load, causes issues with live migrations, and therefore is not supported on other lineups for performance and stability reasons.
+At this time, nested virtualization is enabled only on our DE-RZ9 and DE-STORAGE plan lineups. This restriction exists because nested virtualization significantly increases CPU load, causes issues with live migrations, and therefore is not supported on other lineups for performance and stability reasons.
 
 ## 💾 Backups & Data Management
 
@@ -201,7 +201,7 @@ At this time, built-in scheduling features are not included in the control panel
 Automatic reinstallation scheduling is not currently available. Manual OS reinstalls can be performed anytime via the control panel.
 
 ### 🛑 Can I suspend or pause my server/service temporarily?
-There is currently no built-in "pause" function for services. If you wish to suspend your service to avoid billing, you must cancel it and order again later. Back up all data before cancellation.
+There is currently no built-in "pause" function for services. If you wish to suspend your service to avoid billing, you must cancel it through our support and order it again later. Back up all data before cancellation.
 
 ## 💳 Payment & Billing
 
@@ -231,7 +231,7 @@ Refund processing times depend on the payment method. Typically, card and PayPal
 Yes, you may update your billing address, email, phone number, and other details directly from your client area at any time.
 
 ### 🧑‍💼 Can I get a custom quote or bulk discount for multiple servers?
-Absolutely! If you are looking to deploy a large number of servers or have custom requirements, please contact our sales team. We offer custom quotes and potential discounts for high-volume orders. We also offer a 5% discount for half-yearly and a 10% discount for yearly payments for VPS servers.
+Absolutely! If you are looking to deploy a large number of servers or have custom requirements, please contact our sales team. We offer custom quotes and potential discounts for high-volume orders. We also offer a 10% discount for half-yearly and a 15% discount for yearly payments for VPS servers.
 
 ### 👩‍💼 Can I get a non-profit or educational organization discount?
 We consider requests for special rates from charitable, research, and educational institutions on a case-by-case basis. Please contact our sales team with proof of status and your project details.
@@ -249,13 +249,11 @@ We offer 24/7 technical support through multiple channels:
 - [Discord server](https://senko.digital/discord)
 - [Telegram bot](https://t.me/senkosbot)
 
-Our average response time is under 15 minutes for urgent issues and within 2 hours for regular queries.
-
 ### 🌎 What languages does your support team speak?
 Our main support language is English. Some staff members can also assist in other languages - all depending on their availability, but all official communication is in English.
 
 ### 🚧 What should I do if I encounter a billing or technical issue outside business hours?
-Our support is available 24/7, so please submit a ticket if you need urgent assistance at any hour.
+Our support is available Monday to Saturday from 07:00 UTC to 00:00 UTC, so a reply will typically be provided during work hours.
 
 ### 🤖 Do you have a status page?
 Yes! We provide a public [status page](https://senkostatus.com/) that shows real-time and historical uptime, incident history, and maintenance updates. The status page covers all of our core systems, major customer-facing services, and the underlying VM cluster nodes. You can always check it to see if there are any ongoing or past issues affecting our services. You can also subscribe to updates via email, Microsoft Teams, or Slack if you prefer.
@@ -266,12 +264,12 @@ All maintenance windows, deadlines, and invoice due dates are usually listed in 
 ## 🛡️ Security & DDoS Protection
 
 ### 🛡️ Do you offer any DDoS protection?
-In Germany, we provide basic Layer 3 and Layer 4 DDoS protection for all services. We are actively working on expanding our protection capabilities to include Layer 7 protection in the near future.
+In Germany, we provide basic Layer 3 and Layer 4 DDoS protection for all services. We are actively working on expanding our protection capabilities. In the near future we will be able to offer a paid add-on for VPS servers, which will allow our customers to create custom protection rules and view attack statistics.
 
-In Finland and the Netherlands, DDoS protection is currently unavailable for all of our plans.
+We also offer basic Layer 3 and Layer 4 DDoS protection in Finland and the Netherlands, however we do not have any plans on providing DDoS rule management capabilities in the near future.
 
 ### 🛡 Do you provide a DDoS protection panel?
-Currently, we do not provide a dedicated DDoS protection management panel. However, we are in the process of integrating our DDoS protection solutions across all virtual server locations. We also plan to introduce a DDoS management panel in the near future, alongside the release of our new billing platform.
+Currently, we do not provide a dedicated DDoS protection management panel. However, we are in the process of integrating our DDoS protection solutions in our Germany location. We also plan to introduce DDoS management capabilities through our new Client Area in the near future.
 
 ### 🛡️ What security measures are in place to protect my data?
 Our infrastructure is protected by state-of-the-art firewalls, regular security audits, 24/7 monitoring, and access is limited to authorized personnel only. Backup data is stored separately in secure environments to maximize safety.
@@ -296,12 +294,14 @@ Login requires:
 If this is your first time ordering a game server and/or you do not yet have a game panel account, you will not be able to access the panel until your service is activated.
 
 ### 🧩 Are add-ons or plugins supported (Minecraft, etc.)?
-Yes, for game servers like Minecraft, you may install add-ons, plugins, or modpacks of your choice. Installation instructions and support are available in our knowledge base.
+Yes, for game servers like Minecraft, you may install add-ons, plugins, or modpacks of your choice through the UI in the game panel.
 
 ## 🖥️ Dedicated Servers
 
 ### 🔐 Do you offer KVM/IPMI for dedicated servers?
-We do not provide 24/7 KVM or IPMI access for dedicated servers. This applies to all dedicated server plans listed on our website, as these servers are supplied by a third-party provider who does not offer IPMI access. However, we do provide a dedicated server control panel that allows you to perform essential power operations (power on, power off, reboot) and automated OS reinstallations.
+We do not provide 24/7 KVM or IPMI access for our instantly available dedicated servers. This applies to all dedicated server plans listed on our website, as these servers are supplied by a third-party provider who does not offer IPMI access. However, we do provide a dedicated server control panel that allows you to perform essential power operations (power on, power off, reboot) and automated OS reinstallations.
+
+As for the custom built solutions, we are generally able to offer 24/7 IPMI access to all such servers.
 
 ### 🖥️ Do you offer remote hands or on-site assistance for dedicated servers?
 Remote hands (physical server assistance) is not available for dedicated servers since all hardware is managed by our upstream providers. However, our support team can coordinate with the facility in urgent situations, but this may incur extra charges and is subject to provider's capabilities.
@@ -367,7 +367,7 @@ If we fail to meet this SLA, you will receive compensation for unscheduled downt
 Yes, we occasionally perform scheduled maintenance to improve our services or address underlying issues. When maintenance is planned, we notify affected customers in advance and post updates on our [status page](https://senkostatus.com/). You can also subscribe to receive all maintenance updates via email, Microsoft Teams, or Slack.
 
 ### 🧑‍🔧 What happens if hardware fails?
-In case of any hardware failure or issues affecting your VPS or dedicated server, our team will proactively migrate your services to healthy hardware with as little downtime as possible. Critical infrastructure has redundancy to minimize impact.
+In case of any hardware failure or issues affecting your VPS or dedicated server, our team will be able to proactively migrate your services to healthy hardware with as little downtime per your request, whenever it is possible. Critical infrastructure has redundancy to minimize impact.
 
 ## 😊 Didn't find your question?
 If you didn't find the answer to your question here, please reach out to our support team! We're happy to help via ticket, chat or email.
